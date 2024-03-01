@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="algoContainer">
+        <div id="algorithm">
+            <h1>Algorithm</h1>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="result"></div>
+        <div id="result1"></div>
+        <div id="totalTimeDiv"></div>
+    </div>
+
+    <form id="inputForm">
+        <label for="numbers">ENTER NUMBERS (separated by commas): </label><br>
+        <input type="text" id="numbers" required><br>
+        <input type="submit" id="submit" value="ADD">
+    </form>
+    
+    <script src="anime.min.js"></script>
+    <script src="script1.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const submit = document.getElementById('submit');
+    
+            var algorithmSteps = document.getElementById('algorithm');
+    
+            submit.addEventListener("click", function (event) {
+                event.preventDefault();
+    
+                algorithmSteps.innerHTML = "<h1>Algorithm</h1>"; // Clear previous algorithm steps
+    
+                const numbersInput = document.getElementById('numbers').value.trim(); // Get the input value
+                const numbersArray = numbersInput.split(',').map(Number); // Split the input into an array of numbers
+                let sum = 0;
+    
+                // Display algorithm steps
+                // Step 1: Read Numbers
+                let step1Div = document.createElement('div');
+                step1Div.innerHTML = "STEP 1: READ NUMBERS";
+                algorithmSteps.appendChild(step1Div);
+    
+                for (let i = 0; i < numbersArray.length; i++) {
+                    // Step 1 continued: Read each number
+                    let readNumberDiv = document.createElement('div');
+                    readNumberDiv.innerHTML = "READ NUMBER " + (i + 1) + ": <b>" + numbersArray[i] + "</b>";
+                    algorithmSteps.appendChild(readNumberDiv);
+                }
+    
+                // Step 2: Calculate Sum
+                let step2Div = document.createElement('div');
+                step2Div.innerHTML = "STEP 2: CALCULATE SUM";
+                algorithmSteps.appendChild(step2Div);
+    
+                // Calculate sum
+                for (let i = 0; i < numbersArray.length; i++) {
+                    sum += numbersArray[i];
+                }
+    
+                // Step 3: Display Result
+                let step3Div = document.createElement('div');
+                step3Div.innerHTML = "STEP 3: DISPLAY RESULT";
+                algorithmSteps.appendChild(step3Div);
+    
+                // Display the total sum
+                let sumDiv = document.createElement('div');
+                sumDiv.innerHTML = "Total Sum: <b>" + sum + "</b>";
+                algorithmSteps.appendChild(sumDiv);
+            });
+        });
+    </script>
+</body>
+</html>
